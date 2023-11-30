@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>hw45-46</title>
+</head>
+
+<body>
+  <div class="container">
+    <form name="formSelect" class="formSelect">
+      <fieldset class="products" name="products">
+        <h3>Select product:</h3>
+        <label>
+          <span>Notebooks</span>
+          <input type="radio" name="product" value="notebooks">
+        </label>
+        <label>
+          <span>Cars</span>
+          <input type="radio" name="product" value="cars">
+        </label>
+      </fieldset>
+      <fieldset name="fieldBrand">
+        <h3>Brand:</h3>
+        <select name="brand" disabled></select>
+      </fieldset>
+      <fieldset name="fieldModel">
+        <h3>Model:</h3>
+        <select name="model" disabled></select>
+      </fieldset>
+      <button name="btn" class="btn" disabled>SEND</button>
+    </form>
+  </div>
+
+  <script src="./js/renderModel.js"></script>
+  <script src="./js/renderBrand.js"></script>
+  <script src="./js/main.js"></script>
+
+</body>
+
+</html>

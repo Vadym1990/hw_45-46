@@ -10,59 +10,40 @@ productArr.forEach(function (el) {
 
     el.onchange = function () {
 
-        brand.removeAttribute('disabled');
-        model.removeAttribute('disabled');
-        btn.removeAttribute('disabled')
+        model.setAttribute('disabled', true);
+        btn.setAttribute('disabled', true);
+        model.innerHTML = '';
 
-        if (el.value === 'cars') {
 
-            brand.innerHTML = '';
-            model.innerHTML = '';
-
-            renderCarBrand(brand);
-            renderModelBmw(model);
-
-        } else if (el.value === 'notebooks') {
-
-            brand.innerHTML = '';
-            model.innerHTML = ''
-
-            renderNotebooksBrand(brand);
-            renderModelAsus(model);
-
-            brand.childNodes.onchange = function () {
-                console.log('1')
-            }
+        if (el.value in products) {
+            renderBrand(brand, products[el.value]);
         }
     }
-
 })
+
 brand.onchange = function () {
 
-    if (this.value === 'Asus') {
-        model.innerHTML = '';
-        renderModelAsus(model);
-    } else if (this.value === 'Aser') {
-        model.innerHTML = '';
-        renderModelAser(model);
-    } else if (this.value === 'DELL') {
-        model.innerHTML = '';
-        renderModelDell(model);
+    const selectedProduct = productNodeList.value;
+    const selectedBrand = brand.value;
 
+    if (selectedBrand === 'Выберите бренд:') {
 
-    } else if (this.value === 'BMW') {
+        model.setAttribute('disabled', true);
         model.innerHTML = '';
-        renderModelBmw(model);
-    } else if (this.value === 'Audi') {
-        model.innerHTML = '';
-        renderModelAudi(model);
-    } else if (this.value === 'Mercedes') {
-        model.innerHTML = '';
-        renderModelMercedes(model);
+        btn.setAttribute('disabled', true);
+
+    } else {
+        renderModel(model, products[selectedProduct][selectedBrand]);
     }
 };
+model.onchange = function () {
+    btn.removeAttribute('disabled')
+
+    if (model.value === 'Выберите модель:') {
+        btn.setAttribute('disabled', true)
+    }
+}
 
 btn.onclick = function (e) {
     e.preventDefault();
 }
-
